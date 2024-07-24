@@ -145,3 +145,21 @@ func Decode(bytes []byte) ([]byte, error) {
 
 	return detranslated, nil
 }
+
+func EncodeString(text string) (string, error) {
+	encoded, err := Encode([]byte(text))
+	if err != nil {
+		return "", err
+	}
+
+	return string(encoded), nil
+}
+
+func DecodeString(text string) (string, error) {
+	decoded, err := Decode([]byte(text))
+	if err != nil {
+		return "", err
+	}
+
+	return string(decoded), nil
+}

@@ -210,3 +210,25 @@ func TestDecode(t *testing.T) {
 		}
 	}
 }
+
+func TestEncodeString(t *testing.T) {
+	text := "Hello, World!"
+	expect := "SGVsbG8sIFdvcmxkIQ=="
+
+	encoded, _ := base64.EncodeString(text)
+
+	if encoded != expect {
+		t.Fatalf("Expected %s, got %s.", expect, encoded)
+	}
+}
+
+func TestDecodeString(t *testing.T) {
+	text := "SGVsbG8sIFdvcmxkIQ=="
+	expect := "Hello, World!"
+
+	decoded, _ := base64.DecodeString(text)
+
+	if decoded != expect {
+		t.Fatalf("Expected %s, got %s.", expect, decoded)
+	}
+}
